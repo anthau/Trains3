@@ -265,9 +265,9 @@ function App() {
 
   return (
     <div>
-    <p>Junan kulkutiedot toimitti digitraffic</p>
+    <p>kulkutiedot <br> </br>digitraffic</p>
 
-<p>paina karttamerkkiä halutun <br/>aseman kohdalla</p>
+
     <div className="App">
 
 
