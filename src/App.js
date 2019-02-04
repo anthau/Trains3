@@ -223,7 +223,7 @@ const MapContainer = styled(Map)`
     height: 100vh;
     position:absolute;
     top:0px;
-    left:20%;
+    left:0px;
 `;
 
 
@@ -241,8 +241,10 @@ function App() {
 
   const position = [65, 26];
   const map = (
-
+      <div>
+      
     <MapContainer center={position} zoom={6}>
+   
       <TileLayer
         url='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
         attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -256,6 +258,7 @@ function App() {
 
 
     </MapContainer>
+    </div>
 
   );
 
