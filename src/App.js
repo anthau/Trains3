@@ -219,11 +219,11 @@ class Stations extends React.Component {
   }
 }
 const MapContainer = styled(Map)`
-    width: calc(100vw - 300px);
+    width: 90%;
     height: 100vh;
     position:absolute;
     top:0px;
-    left:300px;
+    left:20%;
 `;
 
 
