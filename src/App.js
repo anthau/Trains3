@@ -219,11 +219,11 @@ class Stations extends React.Component {
   }
 }
 const MapContainer = styled(Map)`
-    width: 90%;
+    width: 80%;
     height: 100vh;
     position:absolute;
     top:0px;
-    left:0px;
+    left:15px;
 `;
 
 
@@ -265,7 +265,7 @@ function App() {
 
   return (
     <div>
-    <p>kulkutiedot <br> </br>digitraffic</p>
+    <p>Kulkutiedot by digitraffic</p>
 
 
     <div className="App">
