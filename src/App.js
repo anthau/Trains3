@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Metolib from '@fmidev/metolib';
+import React from 'react';
+
 import './App.css';
 import { Map, Marker, TileLayer } from "react-leaflet";
 import Modal from 'react-responsive-modal';
 import styled from "styled-components";
 import L from "leaflet";
-import Sidebar from './Sidebar';
-import { Container, Row, Col } from 'reactstrap';
+
+
 
 class Stations extends React.Component {
   data = null
@@ -34,7 +34,7 @@ class Stations extends React.Component {
   calculate(train)  {
     //lainattu funktio distance https://www.geodatasource.com/developers/javascript
     function distance(lat1, lon1, lat2, lon2, unit) {
-      if ((lat1 == lat2) && (lon1 == lon2)) {
+      if ((lat1 === lat2) && (lon1 === lon2)) {
         return 0;
       }
       else {
@@ -49,8 +49,8 @@ class Stations extends React.Component {
         dist = Math.acos(dist);
         dist = dist * 180/Math.PI;
         dist = dist * 60 * 1.1515;
-        if (unit=="K") { dist = dist * 1.609344 }
-        if (unit=="N") { dist = dist * 0.8684 }
+        if (unit==="K") { dist = dist * 1.609344 }
+        if (unit==="N") { dist = dist * 0.8684 }
         return dist;
       }
     }
@@ -63,7 +63,8 @@ class Stations extends React.Component {
     .then((responseJson) => {
 
             var response=JSON.stringify(responseJson);
-            if(response.length==2) 
+            //empty
+            if(response.length===2) 
                  alert("Junasta ei tietoja")
             else {
                  var trainLat=responseJson[0].location.coordinates[1]
@@ -90,7 +91,7 @@ class Stations extends React.Component {
 
     var t = this;
 
-    let stations = await fetch('https://rata.digitraffic.fi/api/v1/live-trains/station/' + element.stationShortCode + '?arrived_trains=10&arriving_trains=10&departed_trains=10&departing_trains=10&include_nonstopping=false')
+    await fetch('https://rata.digitraffic.fi/api/v1/live-trains/station/' + element.stationShortCode + '?arrived_trains=10&arriving_trains=10&departed_trains=10&departing_trains=10&include_nonstopping=false')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -100,11 +101,11 @@ class Stations extends React.Component {
         responseJson.forEach(element => {
 
 
-          if (element.trainCategory == "Long-distance" || element.trainCategory == "Commuter") {
-            var train=element.trainType + " " + element.trainNumber
+          if (element.trainCategory === "Long-distance" || element.trainCategory === "Commuter") {
+       
         
             element.timeTableRows.forEach(stops => {
-              if (stops.stationShortCode == this.state.code  && stops.type=="DEPARTURE")   {
+              if (stops.stationShortCode === this.state.code  && stops.type==="DEPARTURE")   {
 
                var dep= new Date(stops.scheduledTime)
                var minutes=dep.getMinutes();
@@ -114,7 +115,7 @@ class Stations extends React.Component {
               var target=t.state.longName[element.timeTableRows[element.timeTableRows.length-1].stationShortCode]
 
              //  alert(dep.getHours() + ":" + dep.getMinutes())
-               if(new Date(Date.now()).getDate()==dep.getDate())  {
+               if(new Date(Date.now()).getDate()===dep.getDate())  {
                test2.push(<tr key="1">
                <td  key="1"><button  onClick={()=>{ this.calculate(element.trainNumber)}} key="1">info</button></td>
                <td  key="1">{element.trainType + " " + element.trainNumber}</td><td xs="2">{  dep.getHours() + ":" + minutes}</td>
@@ -173,7 +174,7 @@ class Stations extends React.Component {
     var stations1 = [];
     var t = this;
 
-    var test1 = []
+
     var data=[];
     stations.forEach(function (element) {
       //only passangerstations
