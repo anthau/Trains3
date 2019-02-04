@@ -26,7 +26,7 @@ class Stations extends React.Component {
 
 
     }
-    alert('Terve tuloa ohjelmaan: Tekijä: Antto Hautamäki, kulkutiedot digitraffic')
+    alert('Tervetuloa ohjelmaan: Tekijä: Antto Hautamäki, kulkutiedot digitraffic')
   }
 
   onOpenModal() {
